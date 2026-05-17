@@ -1,0 +1,136 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --color-primary: #0ea5e9;
+  --color-secondary: #8b5cf6;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+}
+
+/* Theme color accents */
+.theme-black {
+  --color-primary: #111827; /* dark/black accent */
+  --color-secondary: #374151;
+  --bg-color: #000000;
+  --text-color: #e5e7eb;
+}
+
+.theme-blue {
+  --color-primary: #0ea5e9;
+  --color-secondary: #0369a1;
+  --bg-color: #0b1220;
+  --text-color: #e6f7ff;
+}
+
+.theme-purple {
+  --color-primary: #7c3aed;
+  --color-secondary: #5b21b6;
+  --bg-color: #120617;
+  --text-color: #f6edff;
+}
+
+* {
+  @apply transition-colors duration-300;
+}
+
+body {
+  @apply antialiased;
+}
+
+/* Apply theme variables to the page background and text */
+.theme-black body, .theme-blue body, .theme-purple body {
+  background-color: var(--bg-color, #0b1220);
+  color: var(--text-color, #e5e7eb);
+}
+
+/* Glassmorphism Effect */
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+
+.glass-dark {
+  @apply bg-black/10 backdrop-blur-md border border-black/20;
+}
+
+/* Gradient Background */
+.gradient-bg {
+  @apply bg-gradient-to-br from-primary-500 via-secondary-500 to-primary-600;
+}
+
+/* Gradient Text */
+.gradient-text {
+  @apply bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent;
+}
+
+/* Animations */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(14, 165, 233, 0.5), 0 0 10px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.8), 0 0 30px rgba(139, 92, 246, 0.5);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Small starfield popover canvas sizing */
+.starfield-canvas {
+  width: 220px;
+  height: 120px;
+}
+
+/* Fullscreen star overlay styling */
+.fullscreen-starfield {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.fullscreen-star-close {
+  pointer-events: auto;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-400 rounded-full hover:bg-primary-500;
+}
+
+/* Utility Classes */
+.btn-gradient {
+  @apply bg-gradient-to-r from-primary-500 to-secondary-600 hover:from-primary-600 hover:to-secondary-700 text-white;
+}
+
+.btn-outline {
+  @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-50;
+}
+
+.card-hover {
+  @apply hover:shadow-lg hover:scale-105 cursor-pointer;
+}
+
+.input-focus {
+  @apply focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+}
